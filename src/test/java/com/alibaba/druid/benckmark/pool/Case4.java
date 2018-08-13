@@ -22,10 +22,7 @@ import java.util.concurrent.CountDownLatch;
 
 import javax.sql.DataSource;
 
-import junit.framework.TestCase;
-
 import org.apache.commons.dbcp.BasicDataSource;
-import org.logicalcobwebs.proxool.ProxoolDataSource;
 
 import com.alibaba.druid.TestUtil;
 import com.alibaba.druid.benckmark.pool.model.TableOperator;
@@ -35,6 +32,8 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 import com.taobao.datasource.LocalTxDataSourceDO;
 import com.taobao.datasource.TaobaoDataSourceFactory;
 import com.taobao.datasource.resource.adapter.jdbc.local.LocalTxDataSource;
+
+import junit.framework.TestCase;
 
 /**
  * 测试各个连接池在进行批量插入时操作的性能
@@ -177,24 +176,25 @@ public class Case4 extends TestCase {
         System.out.println();
     }
 
+    /*
     public void test_proxool() throws Exception {
         ProxoolDataSource dataSource = new ProxoolDataSource();
         // dataSource.(10);
         // dataSource.setMaxActive(50);
         dataSource.setMinimumConnectionCount(minPoolSize);
         dataSource.setMaximumConnectionCount(maxPoolSize);
-
+    
         dataSource.setDriver(driverClass);
         dataSource.setDriverUrl(jdbcUrl);
-
+    
         dataSource.setUser(user);
         dataSource.setPassword(password);
-
+    
         for (int i = 0; i < loopCount; ++i) {
             p0(dataSource, "proxool", threadCount);
         }
         System.out.println();
-    }
+    }*/
 
     public void test_tomcat_jdbc() throws Exception {
         org.apache.tomcat.jdbc.pool.DataSource dataSource = new org.apache.tomcat.jdbc.pool.DataSource();
@@ -261,7 +261,8 @@ public class Case4 extends TestCase {
         for (int i = 0; i < threads.length; ++i) {
             threadIdArray[i] = threads[i].getId();
         }
-        ThreadInfo[] threadInfoArray = ManagementFactory.getThreadMXBean().getThreadInfo(threadIdArray);
+        ThreadInfo[] threadInfoArray = ManagementFactory.getThreadMXBean()
+            .getThreadInfo(threadIdArray);
 
         dumpLatch.countDown();
         operator.dropTable();
@@ -279,8 +280,8 @@ public class Case4 extends TestCase {
         long fullGC = TestUtil.getFullGC() - startFullGC;
 
         System.out.println("thread " + threadCount + " " + name + " millis : "
-                           + NumberFormat.getInstance().format(millis) + "; YGC " + ygc + " FGC " + fullGC
-                           + " blocked " + NumberFormat.getInstance().format(blockedCount) //
+                           + NumberFormat.getInstance().format(millis) + "; YGC " + ygc + " FGC "
+                           + fullGC + " blocked " + NumberFormat.getInstance().format(blockedCount) //
                            + " waited " + NumberFormat.getInstance().format(waitedCount));
 
     }

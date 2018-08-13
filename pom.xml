@@ -73,6 +73,7 @@
 		<url>http://code.alibabatech.com/jira/browse/DRUID</url>
 	</issueManagement>
 	<build>
+	<!--  
 		<extensions>
 			<extension>
 				<groupId>org.apache.maven.wagon</groupId>
@@ -80,6 +81,7 @@
 				<version>1.0-beta-2</version>
 			</extension>
 		</extensions>
+		-->
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -617,6 +619,8 @@
 			<version>0.8.0.RELEASE</version>
 			<scope>test</scope>
 		</dependency>
+		
+		<!--  
 		<dependency>
 			<groupId>proxool</groupId>
 			<artifactId>proxool</artifactId>
@@ -629,6 +633,7 @@
 			<version>0.9.1</version>
 			<scope>test</scope>
 		</dependency>
+		-->
 
 		<dependency>
 			<groupId>c3p0</groupId>

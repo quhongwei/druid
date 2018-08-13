@@ -27,10 +27,7 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import javax.sql.DataSource;
 
-import junit.framework.TestCase;
-
 import org.apache.commons.dbcp.BasicDataSource;
-import org.logicalcobwebs.proxool.ProxoolDataSource;
 
 import com.alibaba.druid.TestUtil;
 import com.alibaba.druid.mock.MockDriver;
@@ -40,6 +37,8 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 import com.taobao.datasource.LocalTxDataSourceDO;
 import com.taobao.datasource.TaobaoDataSourceFactory;
 import com.taobao.datasource.resource.adapter.jdbc.local.LocalTxDataSource;
+
+import junit.framework.TestCase;
 
 /**
  * TestOnBo 类Case1.java的实现描述：TODO 类实现描述
@@ -204,6 +203,7 @@ public class Case1 extends TestCase {
         System.out.println();
     }
 
+    /*
     public void test_proxool() throws Exception {
         ProxoolDataSource dataSource = new ProxoolDataSource();
         // dataSource.(10);
@@ -222,7 +222,7 @@ public class Case1 extends TestCase {
             p0(dataSource, "proxool", threadCount);
         }
         System.out.println();
-    }
+    }*/
 
     public void test_tomcat_jdbc() throws Exception {
         org.apache.tomcat.jdbc.pool.DataSource dataSource = new org.apache.tomcat.jdbc.pool.DataSource();

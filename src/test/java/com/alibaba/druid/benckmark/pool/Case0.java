@@ -22,15 +22,14 @@ import java.text.NumberFormat;
 
 import javax.sql.DataSource;
 
-import junit.framework.TestCase;
-
 import org.apache.commons.dbcp.BasicDataSource;
-import org.logicalcobwebs.proxool.ProxoolDataSource;
 
 import com.alibaba.druid.TestUtil;
 import com.alibaba.druid.pool.DruidDataSource;
 import com.jolbox.bonecp.BoneCPDataSource;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
+
+import junit.framework.TestCase;
 
 public class Case0 extends TestCase {
 
@@ -148,6 +147,7 @@ public class Case0 extends TestCase {
         System.out.println();
     }
     
+    /*
     public void f_test_proxool() throws Exception {
         ProxoolDataSource dataSource = new ProxoolDataSource();
         // dataSource.(10);
@@ -167,7 +167,7 @@ public class Case0 extends TestCase {
         }
         System.out.println();
     }
-    
+    */
     public void f_test_tomcat_jdbc() throws Exception {
         org.apache.tomcat.jdbc.pool.DataSource dataSource = new org.apache.tomcat.jdbc.pool.DataSource();
         // dataSource.(10);

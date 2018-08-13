@@ -21,10 +21,7 @@ import java.sql.PreparedStatement;
 
 import javax.sql.DataSource;
 
-import junit.framework.TestCase;
-
 import org.apache.commons.dbcp.BasicDataSource;
-import org.logicalcobwebs.proxool.ProxoolDataSource;
 
 import com.alibaba.druid.mock.MockConnection;
 import com.alibaba.druid.mock.MockPreparedStatement;
@@ -34,6 +31,8 @@ import com.jolbox.bonecp.ConnectionHandle;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import com.mchange.v2.c3p0.impl.NewProxyConnection;
 import com.mchange.v2.c3p0.impl.NewProxyPreparedStatement;
+
+import junit.framework.TestCase;
 
 public class TestPSCache extends TestCase {
 
@@ -88,6 +87,7 @@ public class TestPSCache extends TestCase {
         }
     }
 
+    /*
     public void f_test_proxool() throws Exception {
         ProxoolDataSource ds = new ProxoolDataSource();
         ds.setDriver("com.alibaba.druid.mock.MockDriver");
@@ -96,12 +96,12 @@ public class TestPSCache extends TestCase {
         ds.setMinimumConnectionCount(0);
         ds.setUser("user");
         ds.setPassword("password");
-
+    
         for (int i = 0; i < 10; ++i) {
             f(ds, 5);
             System.out.println("--------------------------------------------");
         }
-    }
+    }*/
 
     public static void f(DataSource ds, int count) throws Exception {
         Connection conn = ds.getConnection();
@@ -114,7 +114,7 @@ public class TestPSCache extends TestCase {
 
         conn.close();
     }
-    
+
     public static MockPreparedStatement unwrap(PreparedStatement stmt) throws Exception {
         if (stmt instanceof NewProxyPreparedStatement) {
             Field field = NewProxyPreparedStatement.class.getDeclaredField("inner");

@@ -20,10 +20,7 @@ import java.sql.Connection;
 
 import javax.sql.DataSource;
 
-import junit.framework.TestCase;
-
 import org.apache.commons.dbcp.BasicDataSource;
-import org.logicalcobwebs.proxool.ProxoolDataSource;
 
 import com.alibaba.druid.mock.MockConnection;
 import com.alibaba.druid.pool.DruidDataSource;
@@ -31,6 +28,8 @@ import com.jolbox.bonecp.BoneCPDataSource;
 import com.jolbox.bonecp.ConnectionHandle;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import com.mchange.v2.c3p0.impl.NewProxyConnection;
+
+import junit.framework.TestCase;
 
 public class TestLRU extends TestCase {
 
@@ -81,6 +80,7 @@ public class TestLRU extends TestCase {
         }
     }
     
+    /*
     public void f_test_proxool() throws Exception {
         ProxoolDataSource ds = new ProxoolDataSource();
         ds.setDriver("com.alibaba.druid.mock.MockDriver");
@@ -94,7 +94,7 @@ public class TestLRU extends TestCase {
             f(ds, 5);
             System.out.println("--------------------------------------------");
         }
-    }
+    }*/
     
 //    public void test_jboss() throws Exception {
 //        LocalTxDataSource ds = new LocalTxDataSource();
